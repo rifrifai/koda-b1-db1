@@ -1,0 +1,71 @@
+-- CREATE TABLE Peminjam(
+-- 	id SERIAL PRIMARY KEY,
+-- 	name VARCHAR(255) NOT NULL,
+-- 	date_pinjam DATE DEFAULT NOW()
+-- );
+-- CREATE TABLE Petugas(
+-- 	id SERIAL PRIMARY KEY,
+-- 	name VARCHAR(255) NOT NULL,
+-- 	id_peminjam INT REFERENCES Peminjam(id)
+-- );
+-- CREATE TABLE Rak_Buku(
+-- 	id SERIAL PRIMARY KEY,
+-- 	name VARCHAR(100) NOT NULL
+-- );
+-- CREATE TABLE Kategori(
+-- 	id SERIAL PRIMARY KEY,
+-- 	name VARCHAR(255) NOT NULL,
+-- 	id_rak INT REFERENCES Rak_Buku(id)
+-- );
+-- CREATE TABLE Buku(
+-- 	id SERIAL PRIMARY KEY,
+-- 	name VARCHAR(255) NOT NULL,
+-- 	penulis VARCHAR(80) NOT NULL,
+-- 	jumlah INT,
+-- 	id_kategori INT REFERENCES Kategori(id),
+-- 	id_peminjam INT REFERENCES Peminjam(id),
+-- 	id_rak INT REFERENCES Rak_Buku(id)
+-- );
+-- INSERT INTO Peminjam(name, date_pinjam) VALUES
+-- ('alwi', '2026-11-12'),
+-- ('zakyy', '2026-9-9'),
+-- ('rara', '2026-10-1'),
+-- ('rokcy', '2026-8-17'),
+-- ('gerung', '2025-12-12'),
+-- ('zhafran', '2026-8-23'),
+-- ('kiky', '2025-10-10'),
+-- ('tiok', '2026-9-10'),
+-- ('ganesha', '2025-10-10')
+-- SELECT * FROM Kategori;
+-- INSERT INTO Petugas(name, id_peminjam) VALUES
+-- ('joko', 1),
+-- ('owi', 2),
+-- ('prabowo', 3),
+-- ('prabowo', 4),
+-- ('prabowo', 5),
+-- ('prabowo', 6),
+-- ('prabowo', 7),
+-- ('prabowo', 8),
+-- ('subianto', 9),
+-- ('subianto', 10)
+-- INSERT INTO Rak_Buku(name) VALUES
+-- ('sejarah'), ('teknologi'),('novel'), ('biografi'), ('matematika'), ('science'), ('keagamaan'), ('politik'), ('mebel'), ('astronomi')
+-- INSERT INTO Kategori(name, id_rak) VALUES
+-- ('sejarah', 1), ('teknologi', 2),('novel', 3), ('biografi', 4), ('matematika', 5), ('science', 6), ('keagamaan', 7), ('politik', 8), ('mebel', 9), ('astronomi', 10), ('shalat', 7), ('kayu', 9), ('bulan', 10), ('bintang', 10), ('programming', 2), ('AI', 2)
+-- INSERT INTO Buku(name, penulis, jumlah, id_kategori, id_peminjam, id_rak) VALUES
+-- ('habis gelap terbitlah terang', 'zakky dzulfikar', 90, 1, 1, 1),
+-- ('programming di usia 25', 'alvin chakra', 22, 15, 1, 2 ),
+-- ('programming di usia 50+', 'alvin chakra', 23, 15, 1, 4 ),
+-- ('shalatlah sebelum di shalatkan', 'afif bowo', 10, 7, 3, 7 ),
+-- ('sejarah indonesia merdeka', 'rizal yanto', 30, 1, 6, 1 ),
+-- ('semakin cerdas dengan AI', 'alvin chakra', 22, 16, 9, 2 ),
+-- ('kayu semakin punah karena tisu', 'olga yup', 100, 12, 7, 9 ),
+-- ('mengamati bintang arius', 'bowo sujatmiko', 22, 14, 7, 10 ),
+-- ('belajar dari matahari dan bulan', 'ghufron afif', 22, 3, 5, 3 ),
+-- ('rumus pi sesungguhnya', 'alvin einstein', 22, 5, 5, 5 )
+-- SELECT * FROM Buku;
+SELECT p.name, b.name, b.penulis, k.name 
+FROM Buku b 
+JOIN Peminjam p ON b.id = p.id 
+JOIN Kategori k ON k.id = b.id
+
